@@ -28,8 +28,8 @@ impl MessageHandler for Commands {
         let author = message.prefix.nick.as_ref().unwrap(); 
         let content = content[space_idx + 2..].to_string();
         
-        let space_idx = content.find(' ').unwrap_or(content.len() - 1);
-        let command = content[1..space_idx + 1].to_string();
+        let space_idx = content.find(' ').unwrap_or(content.len());
+        let command = content[0..space_idx].to_string();
 
         if !content.starts_with(PREFIX) { return Ok(()) }
 
