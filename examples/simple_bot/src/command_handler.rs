@@ -33,7 +33,7 @@ impl MessageHandler for Commands {
 
         if !content.starts_with(PREFIX) { return Ok(()) }
 
-        let response = match self.commands.get(&command) {
+        let response = match self.commands.get(&command[1..]) {
             Some(fun) => fun(&channel, &author, &content),
             None => return Ok(())
         };
